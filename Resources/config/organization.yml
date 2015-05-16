@@ -1,0 +1,20 @@
+parameters:
+    xidea_organization.organization.configuration.default.class: Xidea\Bundle\BaseBundle\Configuration
+    xidea_organization.organization.factory.default.class: Xidea\Component\Base\Factory\ModelFactory
+    xidea_organization.organization.template.configuration.default.class: Xidea\Bundle\BaseBundle\TemplateConfiguration
+  
+services:
+    xidea_organization.organization.configuration.default:
+        class: %xidea_organization.organization.configuration.default.class%
+        arguments:
+            - @xidea_organization.organization.template.configuration
+    xidea_organization.organization.template.configuration.default:
+        class: %xidea_organization.organization.template.configuration.default.class%
+        arguments:
+            - %xidea_organization.organization.template.namespace%
+            - %xidea_organization.organization.template.templates%
+            - %xidea_organization.organization.template.engine%
+    xidea_organization.organization.factory.default:
+        class: %xidea_organization.organization.factory.default.class%
+        arguments:
+            - %xidea_organization.organization.class%

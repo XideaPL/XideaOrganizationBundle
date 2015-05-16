@@ -1,0 +1,4 @@
+Xidea\Component\Organization\Model\AbstractOrganization:
+    properties:
+        name:
+            - NotBlank: {}

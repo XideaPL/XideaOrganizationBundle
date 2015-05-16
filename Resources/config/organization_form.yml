@@ -1,0 +1,24 @@
+parameters:
+    xidea_organization.organization.form.type.class: Xidea\Bundle\OrganizationBundle\Form\Type\OrganizationType
+    xidea_organization.organization.form.create.factory.default.class: Xidea\Bundle\BaseBundle\Form\Factory\FormFactory
+    xidea_organization.organization.form.create.handler.default.class: Xidea\Bundle\OrganizationBundle\Form\Handler\OrganizationFormHandler
+
+services:
+    xidea_organization.organization.form.type:
+        class: %xidea_organization.organization.form.type.class%
+        arguments:
+            - %xidea_organization.organization.class%
+        tags:
+            - { name: form.type, alias: "xidea_organization" }
+    xidea_organization.organization.form.create.factory.default:
+        class: %xidea_organization.organization.form.create.factory.default.class%
+        arguments:
+            - @form.factory
+            - %xidea_organization.organization.form.create.name%
+            - %xidea_organization.organization.form.create.type%
+            - %xidea_organization.organization.form.create.validation_groups%
+    xidea_organization.organization.form.create.handler.default:
+        class: %xidea_organization.organization.form.create.handler.default.class%
+        arguments:
+            - @xidea_organization.organization.form.create.factory
+            - @event_dispatcher

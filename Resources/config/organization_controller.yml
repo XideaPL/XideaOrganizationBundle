@@ -1,0 +1,33 @@
+parameters:
+    xidea_organization.controller.list.class: Xidea\Bundle\OrganizationBundle\Controller\Organization\ListController
+    xidea_organization.controller.show.class: Xidea\Bundle\OrganizationBundle\Controller\Organization\ShowController
+    xidea_organization.controller.create.class: Xidea\Bundle\OrganizationBundle\Controller\Organization\CreateController
+  
+services:
+    xidea_organization.controller.list:
+        class: %xidea_organization.controller.list.class%
+        arguments:
+            - @xidea_organization.organization.configuration
+            - @xidea_organization.organization.loader
+        calls:
+            - [setEventDispatcher, [@event_dispatcher]]
+            - [setTemplating, [@templating]]
+    xidea_organization.controller.show:
+        class: %xidea_organization.controller.show.class%
+        arguments:
+            - @xidea_organization.organization.configuration
+            - @xidea_organization.organization.loader
+        calls:
+            - [setEventDispatcher, [@event_dispatcher]]
+            - [setTemplating, [@templating]]
+    xidea_organization.controller.create:
+        class: %xidea_organization.controller.create.class%
+        arguments:
+            - @xidea_organization.organization.configuration
+            - @xidea_organization.organization.factory
+            - @xidea_organization.organization.manager
+            - @xidea_organization.organization.form.create.handler
+        calls:
+            - [setEventDispatcher, [@event_dispatcher]]
+            - [setRouter, [@router]]
+            - [setTemplating, [@templating]]

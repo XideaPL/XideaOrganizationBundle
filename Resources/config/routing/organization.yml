@@ -1,0 +1,13 @@
+xidea_organization_list:
+    pattern:  /organizations
+    defaults: { _controller: xidea_organization.controller.list:listAction }
+ 
+xidea_organization_show:
+    pattern:  /organizations/{id}
+    defaults: { _controller: xidea_organization.controller.show:showAction }
+    requirements:
+        id:  \d+
+    
+xidea_organization_create:
+    pattern:  /organizations/create
+    defaults: { _controller: xidea_organization.controller.create:createAction }

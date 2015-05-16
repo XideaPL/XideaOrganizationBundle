@@ -1,0 +1,17 @@
+organization:
+    label: Firma
+    name: Nazwa
+
+organization_form:
+    create:
+        submit: Utwórz
+        
+organization_action:
+    list:
+        title: Firmy
+    show:
+        title: %organization_name%
+        details:
+            title: Szczegóły firmy
+    create:
+        title: Nowa firma

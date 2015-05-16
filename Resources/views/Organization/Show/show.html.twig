@@ -1,0 +1,42 @@
+{% extends 'XideaOrganizationBundle::main.html.twig' %}
+{% block xidea_organization_header_title %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{ 'organization_action.show.title'|trans({'%organization_name%':model.name}) }}</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+{% endblock %}
+{% block xidea_organization_main %}
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {{ 'organization_action.show.details.title'|trans }}
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <table class="table table-bordered table-striped">
+                        <tbody>
+                          <tr>
+                            <th scope="row">
+                              <code>{{ 'organization.name'|trans }}</code>
+                            </th>
+                            <td>{{ model.name }}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">
+                              <code>{{ 'organization.description'|trans }}</code>
+                            </th>
+                            <td>{{ model.description }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+    </div>
+{% endblock %}
