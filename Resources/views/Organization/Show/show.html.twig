@@ -2,7 +2,7 @@
 {% block xidea_organization_header_title %}
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">{{ 'organization_action.show.title'|trans({'%organization_name%':model.name}) }}</h1>
+            <h1 class="page-header">{{ 'organization_show.title'|trans({'%organization_name%':model.name}) }}</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -13,7 +13,7 @@
         <div class="col-lg-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    {{ 'organization_action.show.details.title'|trans }}
+                    {{ 'organization_show.details.title'|trans }}
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -24,12 +24,6 @@
                               <code>{{ 'organization.name'|trans }}</code>
                             </th>
                             <td>{{ model.name }}</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">
-                              <code>{{ 'organization.description'|trans }}</code>
-                            </th>
-                            <td>{{ model.description }}</td>
                           </tr>
                         </tbody>
                       </table>

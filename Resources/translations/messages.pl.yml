@@ -6,12 +6,13 @@ organization_form:
     create:
         submit: Utwórz
         
-organization_action:
-    list:
+organization_list:
         title: Firmy
-    show:
+        
+organization_show:
         title: %organization_name%
         details:
             title: Szczegóły firmy
-    create:
+            
+organization_create:
         title: Nowa firma
