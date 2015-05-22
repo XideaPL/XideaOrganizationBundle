@@ -1,5 +1,5 @@
 organization:
-    label: Firma
+    label: Organizacja
     name: Nazwa
 
 organization_form:
@@ -7,12 +7,12 @@ organization_form:
         submit: Utwórz
         
 organization_list:
-        title: Firmy
+        title: Organizacje
         
 organization_show:
         title: %organization_name%
         details:
-            title: Szczegóły firmy
+            title: Szczegóły organizacji
             
 organization_create:
-        title: Nowa firma
+        title: Nowa organizacja

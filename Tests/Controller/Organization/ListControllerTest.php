@@ -22,7 +22,7 @@ class ListControllerTest extends ControllerTestCase
 
         $this->assertGreaterThan(
             0,
-            $crawler->filter('html:contains("Firmy")')->count()
+            $crawler->filter('html:contains("Organizacje")')->count()
         );
     }
 }

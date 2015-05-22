@@ -21,7 +21,7 @@ class CreateControllerTest extends ControllerTestCase
 
         $this->assertGreaterThan(
             0,
-            $crawler->filter('html:contains("Nowa firma")')->count()
+            $crawler->filter('html:contains("Nowa organizacja")')->count()
         );
     }
 }
