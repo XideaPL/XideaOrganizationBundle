@@ -10,7 +10,7 @@ organization_list:
         title: Organizacje
         
 organization_show:
-        title: %organization_name%
+        title: %name%
         details:
             title: Szczegóły organizacji
             

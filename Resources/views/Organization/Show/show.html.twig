@@ -1,14 +1,14 @@
 {% extends 'XideaOrganizationBundle::main.html.twig' %}
-{% block xidea_organization_header_title %}
+{% block bundle_title %}
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">{{ 'organization_show.title'|trans({'%organization_name%':model.name}) }}</h1>
+            <h1 class="page-header">{{ 'organization_show.title'|trans({'%name%':model.name}) }}</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
 {% endblock %}
-{% block xidea_organization_main %}
+{% block bundle_main %}
     <div class="row">
         <div class="col-lg-8">
             <div class="panel panel-default">
