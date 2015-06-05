@@ -70,6 +70,8 @@ class CreateController extends AbstractCreateController
 
     protected function onCreateCompleted($model, Request $request, Response $response)
     {
-        $this->dispatch(OrganizationEvents::CREATE_COMPLETED, new FilterOrganizationResponseEvent($model, $request, $response));
+        $this->dispatch(OrganizationEvents::CREATE_COMPLETED, $event = new FilterOrganizationResponseEvent($model, $request, $response));
+        
+        return $event->getResponse();
     }
 }

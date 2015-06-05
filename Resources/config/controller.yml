@@ -26,7 +26,7 @@ services:
             - @xidea_organization.organization.configuration
             - @xidea_organization.organization.factory
             - @xidea_organization.organization.manager
-            - @xidea_organization.organization.form.create.handler
+            - @xidea_organization.organization.form.handler
         calls:
             - [setEventDispatcher, [@event_dispatcher]]
             - [setRouter, [@router]]

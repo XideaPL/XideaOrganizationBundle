@@ -23,8 +23,8 @@ class XideaOrganizationExtension extends AbstractExtension
 
         $loader->load('organization.yml');
         $loader->load('organization_orm.yml');
-        $loader->load('organization_controller.yml');
-        $loader->load('organization_form.yml');
+        $loader->load('controller.yml');
+        $loader->load('form.yml');
 
         $this->loadOrganizationSection($config['organization'], $container, $loader);
     }
@@ -48,12 +48,12 @@ class XideaOrganizationExtension extends AbstractExtension
     
     protected function loadOrganizationFormSection(array $config, ContainerBuilder $container, Loader\YamlFileLoader $loader)
     {
-        $container->setAlias('xidea_organization.organization.form.create.factory', $config['create']['factory']);
-        $container->setAlias('xidea_organization.organization.form.create.handler', $config['create']['handler']);
+        $container->setAlias('xidea_organization.organization.form.factory', $config['organization']['factory']);
+        $container->setAlias('xidea_organization.organization.form.handler', $config['organization']['handler']);
         
-        $container->setParameter('xidea_organization.organization.form.create.type', $config['create']['type']);
-        $container->setParameter('xidea_organization.organization.form.create.name', $config['create']['name']);
-        $container->setParameter('xidea_organization.organization.form.create.validation_groups', $config['create']['validation_groups']);
+        $container->setParameter('xidea_organization.organization.form.type', $config['organization']['type']);
+        $container->setParameter('xidea_organization.organization.form.name', $config['organization']['name']);
+        $container->setParameter('xidea_organization.organization.form.validation_groups', $config['organization']['validation_groups']);
     }
     
     protected function getConfigurationDirectory()
