@@ -7,13 +7,10 @@ services:
     xidea_organization.organization.configuration.default:
         class: %xidea_organization.organization.configuration.default.class%
         arguments:
-            - @xidea_organization.organization.template.configuration
-    xidea_organization.organization.template.configuration.default:
-        class: %xidea_organization.organization.template.configuration.default.class%
-        arguments:
-            - %xidea_organization.organization.template.namespace%
-            - %xidea_organization.organization.template.templates%
-            - %xidea_organization.organization.template.engine%
+            - %xidea_organization.organization.code%
+            - @xidea_organization.template.configuration
+        tags:
+            - { name: xidea_base.configuration }
     xidea_organization.organization.factory.default:
         class: %xidea_organization.organization.factory.default.class%
         arguments:

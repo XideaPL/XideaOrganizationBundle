@@ -31,6 +31,7 @@ class ShowController extends AbstractShowController
         parent::__construct($configuration);
 
         $this->organizationLoader = $organizationLoader;
+        $this->showTemplate = 'organization_show';
     }
 
     protected function loadModel($id)

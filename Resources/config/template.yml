@@ -1,0 +1,12 @@
+parameters:
+    xidea_organization.template.configuration.default.class: Xidea\Bundle\BaseBundle\Template\TemplateConfiguration
+  
+services:
+    xidea_organization.template.configuration.default:
+        class: %xidea_organization.template.configuration.default.class%
+        arguments:
+            - %xidea_organization.template.namespace%
+            - %xidea_organization.template.templates%
+            - %xidea_organization.template.engine%
+        calls:
+            - [setNamespacedPaths, [%xidea_organization.template.namespaced_paths%]]

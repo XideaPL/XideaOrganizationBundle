@@ -29,6 +29,7 @@ class ListController extends AbstractListController
         parent::__construct($configuration);
         
         $this->organizationLoader = $organizationLoader;
+        $this->listTemplate = 'organization_list';
     }
     
     protected function loadModels(Request $request)

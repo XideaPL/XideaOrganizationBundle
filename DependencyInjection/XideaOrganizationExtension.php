@@ -25,12 +25,18 @@ class XideaOrganizationExtension extends AbstractExtension
         $loader->load('organization_orm.yml');
         $loader->load('controller.yml');
         $loader->load('form.yml');
+        $loader->load('template.yml');
 
         $this->loadOrganizationSection($config['organization'], $container, $loader);
+        
+        if (isset($config['template'])) {
+            $this->loadTemplateSection($this->getAlias(), $config['template'], $container, $loader);
+        }
     }
     
     protected function loadOrganizationSection(array $config, ContainerBuilder $container, Loader\YamlFileLoader $loader)
     {
+        $container->setParameter('xidea_organization.organization.code', $config['code']);
         $container->setParameter('xidea_organization.organization.class', $config['class']);
         $container->setAlias('xidea_organization.organization.configuration', $config['configuration']);
         $container->setAlias('xidea_organization.organization.factory', $config['factory']);
@@ -39,10 +45,6 @@ class XideaOrganizationExtension extends AbstractExtension
         
         if (!empty($config['form'])) {
             $this->loadOrganizationFormSection($config['form'], $container, $loader);
-        }
-        
-        if(isset($config['template'])) {
-            $this->loadTemplateSection(sprintf('%s.%s', $this->getAlias(), 'organization'), $config['template'], $container, $loader);
         }
     }
     
@@ -59,5 +61,18 @@ class XideaOrganizationExtension extends AbstractExtension
     protected function getConfigurationDirectory()
     {
         return __DIR__.'/../Resources/config';
+    }
+    
+    protected function getDefaultTemplates()
+    {
+        return [
+            'main' => ['namespace' => '', 'path' => 'main'],
+            'organization_main' => ['path' => 'main'],
+            'organization_list' => ['path' => 'Organization/List/list'],
+            'organization_show' => ['path' => 'Organization/Show/show'],
+            'organization_create' => ['path' => 'Organization/Create/create'],
+            'organization_form' => ['path' => 'Organization/Form/form'],
+            'organization_form_fields' => ['path' => 'Organization/Form/fields']
+        ];
     }
 }

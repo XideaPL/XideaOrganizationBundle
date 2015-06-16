@@ -27,13 +27,14 @@ class Configuration extends AbstractConfiguration
         $rootNode = $treeBuilder->root($this->alias);
         
         $this->addOrganizationSection($rootNode);
+        $this->addTemplateSection($rootNode);
 
         return $treeBuilder;
     }
     
     public function getDefaultTemplateNamespace()
     {
-        return 'XideaOrganizationBundle';
+        return '@XideaOrganization';
     }
     
     protected function addOrganizationSection(ArrayNodeDefinition $node)
@@ -43,6 +44,7 @@ class Configuration extends AbstractConfiguration
                 ->arrayNode('organization')
                     ->addDefaultsIfNotSet()
                     ->children()
+                        ->scalarNode('code')->defaultValue('xidea_organization')->end()
                         ->scalarNode('class')->isRequired()->cannotBeEmpty()->end()
                         ->scalarNode('configuration')->isRequired()->cannotBeEmpty()->end()
                         ->scalarNode('factory')->defaultValue('xidea_organization.organization.factory.default')->end()
@@ -67,23 +69,16 @@ class Configuration extends AbstractConfiguration
                                 ->end()
                             ->end()
                         ->end()
-                        ->append($this->addTemplateNode($this->getDefaultTemplateNamespace(), $this->getDefaultTemplateEngine(), array(
-                            'list' => array(
-                                'path' => 'Organization\List:list'
-                            ),
-                            'show' => array(
-                                'path' => 'Organization\Show:show'
-                            ),
-                            'create' => array(
-                                'path' => 'Organization\Create:create'
-                            ),
-                            'create_form' => array(
-                                'path' => 'Organization\Create:create_form'
-                            )
-                        )))
                     ->end()
                 ->end()
             ->end();
     }
 
+    protected function addTemplateSection(ArrayNodeDefinition $node)
+    {
+        $node
+            ->children()
+                ->append($this->addTemplateNode($this->getDefaultTemplateNamespace(), $this->getDefaultTemplateEngine(), [], true))
+            ->end();
+    }
 }

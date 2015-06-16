@@ -11,7 +11,7 @@ services:
             - @xidea_organization.organization.loader
         calls:
             - [setEventDispatcher, [@event_dispatcher]]
-            - [setTemplating, [@templating]]
+            - [setTemplateManager, [@xidea_base.template_manager]]
     xidea_organization.controller.show:
         class: %xidea_organization.controller.show.class%
         arguments:
@@ -19,7 +19,7 @@ services:
             - @xidea_organization.organization.loader
         calls:
             - [setEventDispatcher, [@event_dispatcher]]
-            - [setTemplating, [@templating]]
+            - [setTemplateManager, [@xidea_base.template_manager]]
     xidea_organization.controller.create:
         class: %xidea_organization.controller.create.class%
         arguments:
@@ -30,4 +30,4 @@ services:
         calls:
             - [setEventDispatcher, [@event_dispatcher]]
             - [setRouter, [@router]]
-            - [setTemplating, [@templating]]
+            - [setTemplateManager, [@xidea_base.template_manager]]

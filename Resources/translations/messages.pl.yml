@@ -3,8 +3,7 @@ organization:
     name: Nazwa
 
 organization_form:
-    create:
-        submit: Utwórz
+    submit: Zapisz
         
 organization_list:
         title: Organizacje
