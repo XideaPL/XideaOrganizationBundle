@@ -25,13 +25,10 @@ class XideaOrganizationExtension extends AbstractExtension
         $loader->load('organization_orm.yml');
         $loader->load('controller.yml');
         $loader->load('form.yml');
-        $loader->load('template.yml');
 
         $this->loadOrganizationSection($config['organization'], $container, $loader);
         
-        if (isset($config['template'])) {
-            $this->loadTemplateSection($this->getAlias(), $config['template'], $container, $loader);
-        }
+        $this->loadTemplateSection($config, $container, $loader);
     }
     
     protected function loadOrganizationSection(array $config, ContainerBuilder $container, Loader\YamlFileLoader $loader)
@@ -66,13 +63,12 @@ class XideaOrganizationExtension extends AbstractExtension
     protected function getDefaultTemplates()
     {
         return [
-            'main' => ['namespace' => '', 'path' => 'main'],
-            'organization_main' => ['path' => 'main'],
-            'organization_list' => ['path' => 'Organization/List/list'],
-            'organization_show' => ['path' => 'Organization/Show/show'],
-            'organization_create' => ['path' => 'Organization/Create/create'],
-            'organization_form' => ['path' => 'Organization/Form/form'],
-            'organization_form_fields' => ['path' => 'Organization/Form/fields']
+            'organization_main' => ['path' => '@XideaOrganization/main'],
+            'organization_list' => ['path' => '@XideaOrganization/Organization/List/list'],
+            'organization_show' => ['path' => '@XideaOrganization/Organization/Show/show'],
+            'organization_create' => ['path' => '@XideaOrganization/Organization/Create/create'],
+            'organization_form' => ['path' => '@XideaOrganization/Organization/Form/form'],
+            'organization_form_fields' => ['path' => '@XideaOrganization/Organization/Form/fields']
         ];
     }
 }

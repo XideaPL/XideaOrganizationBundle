@@ -8,7 +8,6 @@ services:
         class: %xidea_organization.organization.configuration.default.class%
         arguments:
             - %xidea_organization.organization.code%
-            - @xidea_organization.template.configuration
         tags:
             - { name: xidea_base.configuration }
     xidea_organization.organization.factory.default:

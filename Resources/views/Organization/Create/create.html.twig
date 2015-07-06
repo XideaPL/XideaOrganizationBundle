@@ -1,4 +1,4 @@
-{% extends 'XideaOrganizationBundle::main.html.twig' %}
+{% extends xidea_template('organization_main') %}
 {% block bundle_title %}
     <h1 class="page-header">{{ 'organization_create.title'|trans }}</h1>
 {% endblock %}
@@ -11,7 +11,7 @@
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
-                    {{ include('XideaOrganizationBundle:Organization/Form:form.html.twig') }}
+                    {{ include(xidea_template('organization_form')) }}
                 </div>
                 <!-- /.panel-body -->
             </div>
