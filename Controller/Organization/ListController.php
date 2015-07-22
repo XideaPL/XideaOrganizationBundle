@@ -22,19 +22,22 @@ class ListController extends AbstractListController
     /*
      * @var OrganizationLoaderInterface
      */
-    protected $organizationLoader;
+    protected $loader;
 
-    public function __construct(ConfigurationInterface $configuration, OrganizationLoaderInterface $organizationLoader)
+    public function __construct(ConfigurationInterface $configuration, OrganizationLoaderInterface $loader)
     {
         parent::__construct($configuration);
         
-        $this->organizationLoader = $organizationLoader;
+        $this->loader = $loader;
         $this->listTemplate = 'organization_list';
     }
     
     protected function loadModels(Request $request)
     {
-        return $this->organizationLoader->loadAll();
+        return $this->loader->loadByPage(
+            $request->query->get($this->configuration->getPaginationParameterName(), 1),
+            $this->configuration->getPaginationLimit()
+        );
     }
     
     protected function onPreList($models, Request $request)

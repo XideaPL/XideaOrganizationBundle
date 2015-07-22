@@ -14,6 +14,8 @@ services:
         class: %xidea_organization.organization.loader.default.class%
         arguments:
             - @xidea_organization.organization.repository.default
+            - @xidea_organization.organization.configuration
+            - @xidea_base.paginator
     xidea_organization.organization.manager.default:
         class: %xidea_organization.organization.manager.default.class%
         arguments:

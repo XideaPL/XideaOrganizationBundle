@@ -24,19 +24,19 @@ class ShowController extends AbstractShowController
     /*
      * @var OrganizationLoaderInterface
      */
-    protected $organizationLoader;
+    protected $loader;
 
-    public function __construct(ConfigurationInterface $configuration, OrganizationLoaderInterface $organizationLoader)
+    public function __construct(ConfigurationInterface $configuration, OrganizationLoaderInterface $loader)
     {
         parent::__construct($configuration);
 
-        $this->organizationLoader = $organizationLoader;
+        $this->loader = $loader;
         $this->showTemplate = 'organization_show';
     }
 
     protected function loadModel($id)
     {
-        $organization = $this->organizationLoader->load($id);
+        $organization = $this->loader->load($id);
 
         if (!$organization instanceof OrganizationInterface) {
             throw new NotFoundHttpException('organization.not_found');

@@ -28,26 +28,20 @@ class CreateController extends AbstractCreateController
     /*
      * @var ModelFactoryInterface
      */
+    protected $factory;
 
-    protected $organizationFactory;
-
-    /*
-     * @var OrganizationManagerInterface
-     */
-    protected $organizationManager;
-
-    public function __construct(ConfigurationInterface $configuration, ModelFactoryInterface $organizationFactory, OrganizationManagerInterface $modelManager, FormHandlerInterface $formHandler)
+    public function __construct(ConfigurationInterface $configuration, ModelFactoryInterface $factory, OrganizationManagerInterface $manager, FormHandlerInterface $formHandler)
     {
-        parent::__construct($configuration, $modelManager, $formHandler);
+        parent::__construct($configuration, $manager, $formHandler);
 
-        $this->organizationFactory = $organizationFactory;
+        $this->factory = $factory;
         $this->createTemplate = 'organization_create';
         $this->createFormTemplate = 'organization_create_form';
     }
 
     protected function createModel()
     {
-        return $this->organizationFactory->create();
+        return $this->factory->create();
     }
 
     protected function onPreCreate($model, Request $request)

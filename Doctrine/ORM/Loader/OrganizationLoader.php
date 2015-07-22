@@ -9,10 +9,10 @@
 
 namespace Xidea\Bundle\OrganizationBundle\Doctrine\ORM\Loader;
 
-use Doctrine\ORM\EntityManager,
-    Doctrine\ORM\EntityRepository;
-
-use Xidea\Component\Organization\Loader\OrganizationLoaderInterface;
+use Xidea\Component\Organization\Loader\OrganizationLoaderInterface,
+    Xidea\Bundle\OrganizationBundle\Doctrine\ORM\Repository\OrganizationRepositoryInterface;
+use Xidea\Bundle\BaseBundle\ConfigurationInterface,
+    Xidea\Bundle\BaseBundle\Pagination\PaginatorInterface;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
@@ -20,19 +20,32 @@ use Xidea\Component\Organization\Loader\OrganizationLoaderInterface;
 class OrganizationLoader implements OrganizationLoaderInterface
 {
     /*
-     * @var EntityRepository
+     * @var OrganizationRepositoryInterface
      */
-    protected $organizationRepository;
+    protected $repository;
+    
+    /*
+     * @var ConfigurationInterface
+     */
+    protected $configuration;
+    
+    /*
+     * @var PaginatorInterface
+     */
+    protected $paginator;
     
     /**
      * Constructs a comment repository.
      *
-     * @param string $class The class
-     * @param EntityManager The entity manager
+     * @param OrganizationRepositoryInterface $repository The organization repository
+     * @param ConfigurationInterface $configuration The organization configuration
+     * @param PaginatorInterface $paginator The paginator
      */
-    public function __construct(EntityRepository $organizationRepository)
+    public function __construct(OrganizationRepositoryInterface $repository, ConfigurationInterface $configuration, PaginatorInterface $paginator)
     {
-        $this->organizationRepository = $organizationRepository;
+        $this->repository = $repository;
+        $this->configuration = $configuration;
+        $this->paginator = $paginator;
     }
 
     /**
@@ -40,7 +53,7 @@ class OrganizationLoader implements OrganizationLoaderInterface
      */
     public function load($id)
     {
-        return $this->organizationRepository->find($id);
+        return $this->repository->find($id);
     }
 
     /**
@@ -48,7 +61,7 @@ class OrganizationLoader implements OrganizationLoaderInterface
      */
     public function loadAll()
     {
-        return $this->organizationRepository->findAll();
+        return $this->repository->findAll();
     }
 
     /*
@@ -56,7 +69,7 @@ class OrganizationLoader implements OrganizationLoaderInterface
      */
     public function loadBy(array $criteria, array $orderBy = array(), $limit = null, $offset = null)
     {
-        return $this->organizationRepository->findBy($criteria, $orderBy, $limit, $offset);
+        return $this->repository->findBy($criteria, $orderBy, $limit, $offset);
     }
     
     /*
@@ -64,6 +77,16 @@ class OrganizationLoader implements OrganizationLoaderInterface
      */
     public function loadOneBy(array $criteria, array $orderBy = array())
     {
-        return $this->organizationRepository->findOneBy($criteria, $orderBy);
+        return $this->repository->findOneBy($criteria, $orderBy);
+    }
+    
+    /*
+     * @return PaginationInterface
+     */
+    public function loadByPage($page = 1, $limit = 25)
+    {
+        $qb = $this->repository->findQb();
+        
+        return $this->paginator->paginate($qb, $page, $limit);
     }
 }

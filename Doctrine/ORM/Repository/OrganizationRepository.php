@@ -16,4 +16,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class OrganizationRepository extends EntityRepository implements OrganizationRepositoryInterface
 {
+    public function findQb()
+    {
+        $qb = $this->createQueryBuilder('o');
+        
+        return $qb;
+    }
 }
