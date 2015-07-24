@@ -24,6 +24,11 @@ class ListController extends AbstractListController
      */
     protected $loader;
 
+    /**
+     * 
+     * @param ConfigurationInterface $configuration
+     * @param OrganizationLoaderInterface $loader
+     */
     public function __construct(ConfigurationInterface $configuration, OrganizationLoaderInterface $loader)
     {
         parent::__construct($configuration);
@@ -32,6 +37,9 @@ class ListController extends AbstractListController
         $this->listTemplate = 'organization_list';
     }
     
+    /**
+     * {@inheritdoc}
+     */
     protected function loadModels(Request $request)
     {
         return $this->loader->loadByPage(
@@ -40,6 +48,9 @@ class ListController extends AbstractListController
         );
     }
     
+    /**
+     * {@inheritdoc}
+     */
     protected function onPreList($models, Request $request)
     {
         return;

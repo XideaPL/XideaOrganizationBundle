@@ -26,6 +26,11 @@ class ShowController extends AbstractShowController
      */
     protected $loader;
 
+    /**
+     * 
+     * @param ConfigurationInterface $configuration
+     * @param OrganizationLoaderInterface $loader
+     */
     public function __construct(ConfigurationInterface $configuration, OrganizationLoaderInterface $loader)
     {
         parent::__construct($configuration);
@@ -34,6 +39,9 @@ class ShowController extends AbstractShowController
         $this->showTemplate = 'organization_show';
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function loadModel($id)
     {
         $organization = $this->loader->load($id);
@@ -45,6 +53,9 @@ class ShowController extends AbstractShowController
         return $organization;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function onPreShow($model, Request $request)
     {
         return;

@@ -35,10 +35,10 @@ class OrganizationLoader implements OrganizationLoaderInterface
     protected $paginator;
     
     /**
-     * Constructs a comment repository.
+     * Constructs the loader.
      *
-     * @param OrganizationRepositoryInterface $repository The organization repository
-     * @param ConfigurationInterface $configuration The organization configuration
+     * @param OrganizationRepositoryInterface $repository The repository
+     * @param ConfigurationInterface $configuration The configuration
      * @param PaginatorInterface $paginator The paginator
      */
     public function __construct(OrganizationRepositoryInterface $repository, ConfigurationInterface $configuration, PaginatorInterface $paginator)

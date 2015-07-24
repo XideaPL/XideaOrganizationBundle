@@ -30,6 +30,13 @@ class CreateController extends AbstractCreateController
      */
     protected $factory;
 
+    /**
+     * 
+     * @param ConfigurationInterface $configuration
+     * @param ModelFactoryInterface $factory
+     * @param OrganizationManagerInterface $manager
+     * @param FormHandlerInterface $formHandler
+     */
     public function __construct(ConfigurationInterface $configuration, ModelFactoryInterface $factory, OrganizationManagerInterface $manager, FormHandlerInterface $formHandler)
     {
         parent::__construct($configuration, $manager, $formHandler);
@@ -39,11 +46,17 @@ class CreateController extends AbstractCreateController
         $this->createFormTemplate = 'organization_create_form';
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function createModel()
     {
         return $this->factory->create();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function onPreCreate($model, Request $request)
     {
         $this->dispatch(OrganizationEvents::PRE_CREATE, $event = new GetOrganizationResponseEvent($model, $request));
@@ -51,6 +64,9 @@ class CreateController extends AbstractCreateController
         return $event->getResponse();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function onCreateSuccess($model, Request $request)
     {
         $this->dispatch(OrganizationEvents::CREATE_SUCCESS, $event = new GetOrganizationResponseEvent($model, $request));
@@ -64,6 +80,9 @@ class CreateController extends AbstractCreateController
         return $response;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function onCreateCompleted($model, Request $request, Response $response)
     {
         $this->dispatch(OrganizationEvents::CREATE_COMPLETED, $event = new FilterOrganizationResponseEvent($model, $request, $response));
