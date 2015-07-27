@@ -3,28 +3,26 @@
     <h1 class="page-header">{{ 'organization_show.title'|trans({'%name%':model.name}) }}</h1>
 {% endblock %}
 {% block bundle_main %}
-    <div class="row">
-        <div class="col-lg-8">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    {{ 'organization_show.details.title'|trans }}
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <table class="table table-bordered table-striped">
-                        <tbody>
-                          <tr>
-                            <th scope="row">
-                              <code>{{ 'organization.name'|trans }}</code>
-                            </th>
-                            <td>{{ model.name }}</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                </div>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
+    <div class="box box-default">
+        <div class="box-header">
+            <h3 class="box-title">{{ 'organization_show.details.title'|trans }}</h3>
         </div>
+        <!-- /.box-heading -->
+        <div class="box-body">
+            <div class="organization-details">
+                <table class="table table-bordered table-striped organization-table">
+                    <tbody>
+                      <tr>
+                        <th scope="row">
+                          <code>{{ 'organization.name'|trans }}</code>
+                        </th>
+                        <td>{{ model.name }}</td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.box-body -->
     </div>
+    <!-- /.box -->
 {% endblock %}

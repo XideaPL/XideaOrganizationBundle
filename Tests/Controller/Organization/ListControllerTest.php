@@ -18,7 +18,7 @@ class ListControllerTest extends ControllerTestCase
         //$client = $this->logIn();
         $client = $this->createClient();
 
-        $crawler = $client->request('GET', $client->getContainer()->get('router')->generate('xidea_organization_list'));
+        $crawler = $client->request('GET', $client->getContainer()->get('router')->generate('xidea_organization_list', ['page'=>2, 'sort' => 'o.id.desc']));
 
         $this->assertGreaterThan(
             0,
