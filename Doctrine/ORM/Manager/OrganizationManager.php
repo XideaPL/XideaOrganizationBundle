@@ -12,13 +12,13 @@ namespace Xidea\Bundle\OrganizationBundle\Doctrine\ORM\Manager;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Doctrine\ORM\EntityManager;
 use Xidea\Component\Base\Doctrine\ORM\Manager\ModelManagerInterface;
-use Xidea\Component\Organization\Manager\OrganizationManagerInterface,
-    Xidea\Component\Organization\Model\OrganizationInterface;
+use Xidea\Organization\ManagerInterface;
+use Xidea\Organization\OrganizationInterface;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class OrganizationManager implements ModelManagerInterface, OrganizationManagerInterface
+class OrganizationManager implements ManagerInterface, ModelManagerInterface
 {
     /*
      * @var bool

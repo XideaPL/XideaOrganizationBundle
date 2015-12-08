@@ -9,14 +9,12 @@
 
 namespace Xidea\Bundle\OrganizationBundle\Form\Handler;
 
-use Symfony\Component\HttpFoundation\Request,
-    Symfony\Component\EventDispatcher\EventDispatcherInterface,
-    Symfony\Component\Form\FormInterface;
-
-use Xidea\Bundle\BaseBundle\Form\Factory\FormFactoryInterface,
-    Xidea\Bundle\BaseBundle\Form\Handler\FormHandlerInterface,
-    Xidea\Bundle\BaseBundle\Event\FormEvent;
-
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\Form\FormInterface;
+use Xidea\Bundle\BaseBundle\Form\Factory\FormFactoryInterface;
+use Xidea\Bundle\BaseBundle\Form\Handler\FormHandlerInterface;
+use Xidea\Bundle\BaseBundle\Event\FormEvent;
 use Xidea\Bundle\OrganizationBundle\OrganizationEvents;
 
 /**

@@ -9,11 +9,11 @@
 
 namespace Xidea\Bundle\OrganizationBundle;
 
-use Xidea\Component\Organization\OrganizationEvents as BaseOrganizationEvents;
+use Xidea\Organization\Events;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-final class OrganizationEvents extends BaseOrganizationEvents
+final class OrganizationEvents extends Events
 {
 }

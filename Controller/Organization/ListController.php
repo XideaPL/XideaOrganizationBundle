@@ -10,9 +10,9 @@
 namespace Xidea\Bundle\OrganizationBundle\Controller\Organization;
 
 use Symfony\Component\HttpFoundation\Request;
-use Xidea\Component\Organization\Loader\OrganizationLoaderInterface;
-use Xidea\Bundle\BaseBundle\ConfigurationInterface,
-    Xidea\Bundle\BaseBundle\Controller\AbstractListController;
+use Xidea\Organization\LoaderInterface;
+use Xidea\Bundle\BaseBundle\ConfigurationInterface;
+use Xidea\Bundle\BaseBundle\Controller\AbstractListController;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
@@ -27,9 +27,9 @@ class ListController extends AbstractListController
     /**
      * 
      * @param ConfigurationInterface $configuration
-     * @param OrganizationLoaderInterface $loader
+     * @param LoaderInterface $loader
      */
-    public function __construct(ConfigurationInterface $configuration, OrganizationLoaderInterface $loader)
+    public function __construct(ConfigurationInterface $configuration, LoaderInterface $loader)
     {
         parent::__construct($configuration);
         

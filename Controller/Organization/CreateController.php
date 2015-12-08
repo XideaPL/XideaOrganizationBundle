@@ -9,16 +9,16 @@
 
 namespace Xidea\Bundle\OrganizationBundle\Controller\Organization;
 
-use Symfony\Component\HttpFoundation\Request,
-    Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Xidea\Component\Base\Factory\ModelFactoryInterface;
-use Xidea\Component\Organization\Manager\OrganizationManagerInterface;
-use Xidea\Bundle\BaseBundle\ConfigurationInterface,
-    Xidea\Bundle\BaseBundle\Controller\AbstractCreateController,
-    Xidea\Bundle\BaseBundle\Form\Handler\FormHandlerInterface;
-use Xidea\Bundle\OrganizationBundle\OrganizationEvents,
-    Xidea\Bundle\OrganizationBundle\Event\GetOrganizationResponseEvent,
-    Xidea\Bundle\OrganizationBundle\Event\FilterOrganizationResponseEvent;
+use Xidea\Organization\ManagerInterface;
+use Xidea\Bundle\BaseBundle\ConfigurationInterface;
+use Xidea\Bundle\BaseBundle\Controller\AbstractCreateController;
+use Xidea\Bundle\BaseBundle\Form\Handler\FormHandlerInterface;
+use Xidea\Bundle\OrganizationBundle\OrganizationEvents;
+use Xidea\Bundle\OrganizationBundle\Event\GetOrganizationResponseEvent;
+use Xidea\Bundle\OrganizationBundle\Event\FilterOrganizationResponseEvent;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
@@ -34,10 +34,10 @@ class CreateController extends AbstractCreateController
      * 
      * @param ConfigurationInterface $configuration
      * @param ModelFactoryInterface $factory
-     * @param OrganizationManagerInterface $manager
+     * @param ManagerInterface $manager
      * @param FormHandlerInterface $formHandler
      */
-    public function __construct(ConfigurationInterface $configuration, ModelFactoryInterface $factory, OrganizationManagerInterface $manager, FormHandlerInterface $formHandler)
+    public function __construct(ConfigurationInterface $configuration, ModelFactoryInterface $factory, ManagerInterface $manager, FormHandlerInterface $formHandler)
     {
         parent::__construct($configuration, $manager, $formHandler);
 

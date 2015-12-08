@@ -9,10 +9,9 @@
 
 namespace Xidea\Bundle\OrganizationBundle\Event;
 
-use Symfony\Component\HttpFoundation\Request,
-    Symfony\Component\HttpFoundation\Response;
-
-use Xidea\Component\Organization\Model\OrganizationInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Xidea\Organization\OrganizationInterface;
 
 /**
  *

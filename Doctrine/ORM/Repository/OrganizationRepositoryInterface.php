@@ -17,7 +17,7 @@ interface OrganizationRepositoryInterface
     /*
      * @param int $id
      * 
-     * @return \Xidea\Component\Organization\Model\OrganizationInterface
+     * @return \Xidea\Organization\OrganizationInterface
      */
     function find($id);
     

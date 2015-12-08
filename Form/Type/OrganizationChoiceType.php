@@ -13,7 +13,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Xidea\Bundle\BaseBundle\Form\DataTransformer\ModelToIdTransformer;
-use Xidea\Component\Organization\Loader\OrganizationLoaderInterface;
+use Xidea\Organization\LoaderInterface;
 
 /**
  * Description of RegistrationType
@@ -28,9 +28,9 @@ class OrganizationChoiceType extends AbstractType
     protected $loader;
 
     /**
-     * @param OrganizationLoaderInterface $loader The Organization loader
+     * @param LoaderInterface $loader The Organization loader
      */
-    public function __construct(OrganizationLoaderInterface $loader)
+    public function __construct(LoaderInterface $loader)
     {
         $this->loader = $loader;
     }

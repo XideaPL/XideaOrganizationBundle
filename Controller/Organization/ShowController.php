@@ -11,10 +11,10 @@ namespace Xidea\Bundle\OrganizationBundle\Controller\Organization;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Xidea\Component\Organization\Loader\OrganizationLoaderInterface;
-use Xidea\Bundle\BaseBundle\ConfigurationInterface,
-    Xidea\Bundle\BaseBundle\Controller\AbstractShowController;
-use Xidea\Component\Organization\Model\OrganizationInterface;
+use Xidea\Organization\LoaderInterface;
+use Xidea\Bundle\BaseBundle\ConfigurationInterface;
+use Xidea\Bundle\BaseBundle\Controller\AbstractShowController;
+use Xidea\Organization\Model\OrganizationInterface;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
@@ -29,9 +29,9 @@ class ShowController extends AbstractShowController
     /**
      * 
      * @param ConfigurationInterface $configuration
-     * @param OrganizationLoaderInterface $loader
+     * @param LoaderInterface $loader
      */
-    public function __construct(ConfigurationInterface $configuration, OrganizationLoaderInterface $loader)
+    public function __construct(ConfigurationInterface $configuration, LoaderInterface $loader)
     {
         parent::__construct($configuration);
 

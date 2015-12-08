@@ -8,6 +8,6 @@ class XideaOrganizationBundle extends AbstractBundle
 {
     protected function getModelNamespace()
     {
-        return 'Xidea\Component\Organization\Model';
+        return 'Xidea\Organization';
     }
 }

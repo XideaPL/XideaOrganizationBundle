@@ -9,15 +9,15 @@
 
 namespace Xidea\Bundle\OrganizationBundle\Doctrine\ORM\Loader;
 
-use Xidea\Component\Organization\Loader\OrganizationLoaderInterface,
-    Xidea\Bundle\OrganizationBundle\Doctrine\ORM\Repository\OrganizationRepositoryInterface;
-use Xidea\Bundle\BaseBundle\ConfigurationInterface,
-    Xidea\Bundle\BaseBundle\Pagination\PaginatorInterface;
+use Xidea\Organization\LoaderInterface;
+use Xidea\Bundle\OrganizationBundle\Doctrine\ORM\Repository\OrganizationRepositoryInterface;
+use Xidea\Bundle\BaseBundle\ConfigurationInterface;
+use Xidea\Bundle\BaseBundle\Pagination\PaginatorInterface;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class OrganizationLoader implements OrganizationLoaderInterface
+class OrganizationLoader implements LoaderInterface
 {
     /*
      * @var OrganizationRepositoryInterface
