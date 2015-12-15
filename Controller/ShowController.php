@@ -7,25 +7,25 @@
  * file that was distributed with this source code.
  */
 
-namespace Xidea\Bundle\OrganizationBundle\Controller\Organization;
+namespace Xidea\Bundle\OrganizationBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Xidea\Organization\LoaderInterface;
-use Xidea\Bundle\BaseBundle\ConfigurationInterface;
-use Xidea\Bundle\BaseBundle\Controller\AbstractShowController;
-use Xidea\Organization\Model\OrganizationInterface;
+use Xidea\Bundle\BaseBundle\ConfigurationInterface,
+    Xidea\Bundle\BaseBundle\Controller\AbstractController;
+use Xidea\Organization\OrganizationInterface;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class ShowController extends AbstractShowController
+class ShowController extends AbstractController
 {
     /*
-     * @var OrganizationLoaderInterface
+     * @var LoaderInterface
      */
     protected $loader;
-
+    
     /**
      * 
      * @param ConfigurationInterface $configuration
@@ -36,11 +36,27 @@ class ShowController extends AbstractShowController
         parent::__construct($configuration);
 
         $this->loader = $loader;
-        $this->showTemplate = 'organization_show';
+    }
+    
+    /**
+     * 
+     * @param int $id
+     * @param Request $request
+     * @return Response
+     */
+    public function showAction($id, Request $request)
+    {
+        $model = $this->loadModel($id);
+        
+        return $this->render('organization_show', array(
+            'model' => $model
+        ));
     }
 
     /**
-     * {@inheritdoc}
+     * @param int $id
+     * 
+     * @return OrganizationInterface|null
      */
     protected function loadModel($id)
     {
@@ -51,13 +67,5 @@ class ShowController extends AbstractShowController
         }
 
         return $organization;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function onPreShow($model, Request $request)
-    {
-        return;
     }
 }

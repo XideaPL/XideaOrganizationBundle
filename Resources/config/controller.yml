@@ -1,7 +1,7 @@
 parameters:
-    xidea_organization.controller.list.class: Xidea\Bundle\OrganizationBundle\Controller\Organization\ListController
-    xidea_organization.controller.show.class: Xidea\Bundle\OrganizationBundle\Controller\Organization\ShowController
-    xidea_organization.controller.create.class: Xidea\Bundle\OrganizationBundle\Controller\Organization\CreateController
+    xidea_organization.controller.list.class: Xidea\Bundle\OrganizationBundle\Controller\ListController
+    xidea_organization.controller.show.class: Xidea\Bundle\OrganizationBundle\Controller\ShowController
+    xidea_organization.controller.create.class: Xidea\Bundle\OrganizationBundle\Controller\CreateController
   
 services:
     xidea_organization.controller.list:

@@ -1,4 +1,4 @@
-Xidea\Organization\Model\AbstractOrganization:
+Xidea\Organization\AbstractOrganization:
     properties:
         name:
             - NotBlank: {}

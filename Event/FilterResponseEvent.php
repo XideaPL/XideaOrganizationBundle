@@ -17,7 +17,7 @@ use Xidea\Organization\OrganizationInterface;
  *
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class FilterOrganizationResponseEvent extends OrganizationEvent
+class FilterResponseEvent extends OrganizationEvent
 {
 
     private $response;
