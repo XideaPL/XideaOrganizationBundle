@@ -11,7 +11,7 @@ namespace Xidea\Bundle\OrganizationBundle\Controller\Organization;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Xidea\Component\Base\Factory\ModelFactoryInterface;
+use Xidea\Base\Model\FactoryInterface as ModelFactoryInterface;
 use Xidea\Organization\ManagerInterface;
 use Xidea\Bundle\BaseBundle\ConfigurationInterface;
 use Xidea\Bundle\BaseBundle\Controller\AbstractCreateController;
