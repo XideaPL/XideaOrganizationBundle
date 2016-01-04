@@ -11,7 +11,7 @@ namespace Xidea\Bundle\OrganizationBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Xidea\Organization\LoaderInterface;
-use Xidea\Bundle\BaseBundle\ConfigurationInterface,
+use Xidea\Base\ConfigurationInterface,
     Xidea\Bundle\BaseBundle\Controller\AbstractController;
 
 /**

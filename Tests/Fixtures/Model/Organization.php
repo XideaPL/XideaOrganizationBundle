@@ -9,7 +9,7 @@
 
 namespace Xidea\Bundle\OrganizationBundle\Tests\Fixtures\Model;
 
-use Xidea\Organization\AbstractOrganization;
+use Xidea\Bundle\OrganizationBundle\Model\AbstractOrganization;
 
 /**
  * @author Artur Pszczółka <artur.pszczolka@xidea.pl>

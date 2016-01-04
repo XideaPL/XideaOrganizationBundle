@@ -1,4 +1,4 @@
-Xidea\Organization\AbstractOrganization:
+Xidea\Bundle\OrganizationBundle\Model\AbstractOrganization:
     type: mappedSuperclass
     id:
         id:

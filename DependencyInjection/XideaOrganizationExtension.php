@@ -23,8 +23,6 @@ class XideaOrganizationExtension extends AbstractExtension
 
         $loader->load('organization.yml');
         $loader->load('organization_orm.yml');
-        $loader->load('controller.yml');
-        $loader->load('form.yml');
 
         $this->loadOrganizationSection($config['organization'], $container, $loader);
         
