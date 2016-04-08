@@ -38,7 +38,6 @@
             "Xidea\\Bundle\\OrganizationBundle\\": ""
         }
     },
-    "target-dir": "Xidea/Bundle/OrganizationBundle",
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
