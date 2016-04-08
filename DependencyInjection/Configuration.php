@@ -2,20 +2,31 @@
 
 namespace Xidea\Bundle\OrganizationBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
-
-use Xidea\Bundle\BaseBundle\DependencyInjection\AbstractConfiguration;
+use Xidea\Bundle\BaseBundle\DependencyInjection\Helper\ConfigurationHelper;
 
 /**
  * This is the class that validates and merges configuration from your app/config files
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html#cookbook-bundles-extension-config-class}
  */
-class Configuration extends AbstractConfiguration
+class Configuration implements ConfigurationInterface
 {
+    /*
+     * @var string
+     */
+    protected $alias;
+    
     public function __construct($alias)
     {
-        parent::__construct($alias);
+        $this->alias = $alias;
+    }
+    
+    public function getAlias()
+    {
+        return $this->alias;
     }
     
     /**
@@ -23,12 +34,14 @@ class Configuration extends AbstractConfiguration
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = parent::getConfigTreeBuilder();
-        $rootNode = $treeBuilder->root($this->alias);
+        $treeBuilder = new TreeBuilder();
+        $rootNode = $treeBuilder->root($this->getAlias());
         
         $this->addOrganizationSection($rootNode);
-        $this->addTemplateSection($rootNode);
-
+        
+        $helper = new ConfigurationHelper($this->getAlias());
+        $helper->addTemplateSection($rootNode);
+        
         return $treeBuilder;
     }
     
@@ -54,7 +67,7 @@ class Configuration extends AbstractConfiguration
                                     ->children()
                                         ->scalarNode('factory')->defaultValue('xidea_organization.organization.form.factory.default')->end()
                                         ->scalarNode('handler')->defaultValue('xidea_organization.organization.form.handler.default')->end()
-                                        ->scalarNode('type')->defaultValue('xidea_organization')->end()
+                                        ->scalarNode('type')->defaultValue('Xidea\Bundle\OrganizationBundle\Form\Type\OrganizationType')->end()
                                         ->scalarNode('name')->defaultValue('organization')->end()
                                         ->arrayNode('validation_groups')
                                             ->prototype('scalar')->end()

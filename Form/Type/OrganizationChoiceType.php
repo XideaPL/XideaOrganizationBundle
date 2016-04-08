@@ -11,7 +11,8 @@ namespace Xidea\Bundle\OrganizationBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Xidea\Bundle\BaseBundle\Form\DataTransformer\ModelToIdTransformer;
 use Xidea\Organization\LoaderInterface;
 
@@ -40,9 +41,11 @@ class OrganizationChoiceType extends AbstractType
         $transformer = new ModelToIdTransformer($this->loader);
         $builder->addModelTransformer($transformer, true);
     }
-
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    
+    public function configureOptions(OptionsResolver $resolver)
     {
+        parent::configureOptions($resolver);
+        
         $resolver->setDefaults(array(
             'choices' => $this->getChoices()
         ));
@@ -50,10 +53,10 @@ class OrganizationChoiceType extends AbstractType
     
     public function getParent()
     {
-        return 'choice';
+        return ChoiceType::class;
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'xidea_organization_choice';
     }

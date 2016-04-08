@@ -3,30 +3,36 @@
 namespace Xidea\Bundle\OrganizationBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
-use Xidea\Bundle\BaseBundle\DependencyInjection\AbstractExtension;
+use Xidea\Bundle\BaseBundle\DependencyInjection\Helper\ExtensionHelper;
 
 /**
  * This is the class that loads and manages your bundle configuration
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class XideaOrganizationExtension extends AbstractExtension
+class XideaOrganizationExtension extends Extension
 {
     /**
      * {@inheritDoc}
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        list($config, $loader) = $this->setUp($configs, new Configuration($this->getAlias()), $container);
+        $configuration = new Configuration($this->getAlias());
+        $config = $this->processConfiguration($configuration, $configs);
+
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
 
         $loader->load('organization.yml');
         $loader->load('organization_orm.yml');
 
         $this->loadOrganizationSection($config['organization'], $container, $loader);
         
-        $this->loadTemplateSection($config, $container, $loader);
+        $helper = new ExtensionHelper($this->getAlias());
+        $helper->loadTemplateSection($config, $this->getDefaultTemplates(), $container, $loader);
     }
     
     protected function loadOrganizationSection(array $config, ContainerBuilder $container, Loader\YamlFileLoader $loader)
@@ -51,11 +57,6 @@ class XideaOrganizationExtension extends AbstractExtension
         $container->setParameter('xidea_organization.organization.form.type', $config['organization']['type']);
         $container->setParameter('xidea_organization.organization.form.name', $config['organization']['name']);
         $container->setParameter('xidea_organization.organization.form.validation_groups', $config['organization']['validation_groups']);
-    }
-    
-    protected function getConfigurationDirectory()
-    {
-        return __DIR__.'/../Resources/config';
     }
     
     protected function getDefaultTemplates()

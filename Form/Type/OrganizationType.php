@@ -11,7 +11,8 @@ namespace Xidea\Bundle\OrganizationBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * Description of RegistrationType
@@ -39,18 +40,18 @@ class OrganizationType extends AbstractType
                 ->add('name', null, array(
                     'label' => 'organization.name'
                 ))
-                ->add('save', 'submit', array('label' => 'organization_form.submit'))
+                ->add('save', SubmitType::class, array('label' => 'organization_form.submit'))
         ;
     }
-
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    
+    public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => $this->class
-        ));
+        ]);
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'xidea_organization';
     }

@@ -15,60 +15,60 @@ parameters:
 services:
     #services
     xidea_organization.organization.configuration.default:
-        class: %xidea_organization.organization.configuration.default.class%
+        class: '%xidea_organization.organization.configuration.default.class%'
         arguments:
-            - %xidea_organization.organization.code%
+            - '%xidea_organization.organization.code%'
         tags:
             - { name: xidea_base.configuration }
     xidea_organization.organization.factory.default:
-        class: %xidea_organization.organization.factory.default.class%
+        class: '%xidea_organization.organization.factory.default.class%'
         arguments:
-            - %xidea_organization.organization.class%
+            - '%xidea_organization.organization.class%'
     #controllers
     xidea_organization.controller.list:
-        class: %xidea_organization.controller.list.class%
+        class: '%xidea_organization.controller.list.class%'
         arguments:
-            - @xidea_organization.organization.configuration
-            - @xidea_organization.organization.loader
+            - '@xidea_organization.organization.configuration'
+            - '@xidea_organization.organization.loader'
         calls:
-            - [setEventDispatcher, [@event_dispatcher]]
-            - [setTemplateManager, [@xidea_base.template_manager]]
+            - [setEventDispatcher, ['@event_dispatcher']]
+            - [setTemplateManager, ['@xidea_base.template_manager']]
     xidea_organization.controller.show:
-        class: %xidea_organization.controller.show.class%
+        class: '%xidea_organization.controller.show.class%'
         arguments:
-            - @xidea_organization.organization.configuration
-            - @xidea_organization.organization.loader
+            - '@xidea_organization.organization.configuration'
+            - '@xidea_organization.organization.loader'
         calls:
-            - [setEventDispatcher, [@event_dispatcher]]
-            - [setTemplateManager, [@xidea_base.template_manager]]
+            - [setEventDispatcher, ['@event_dispatcher']]
+            - [setTemplateManager, ['@xidea_base.template_manager']]
     xidea_organization.controller.create:
         class: %xidea_organization.controller.create.class%
         arguments:
-            - @xidea_organization.organization.configuration
-            - @xidea_organization.organization.factory
-            - @xidea_organization.organization.manager
-            - @xidea_organization.organization.form.handler
+            - '@xidea_organization.organization.configuration'
+            - '@xidea_organization.organization.factory'
+            - '@xidea_organization.organization.manager'
+            - '@xidea_organization.organization.form.handler'
         calls:
-            - [setEventDispatcher, [@event_dispatcher]]
-            - [setRouter, [@router]]
-            - [setTemplateManager, [@xidea_base.template_manager]]
+            - [setEventDispatcher, ['@event_dispatcher']]
+            - [setRouter, ['@router']]
+            - [setTemplateManager, ['@xidea_base.template_manager']]
     #forms
     xidea_organization.organization.form.type:
-        class: %xidea_organization.organization.form.type.class%
+        class: '%xidea_organization.organization.form.type.class%'
         arguments:
-            - %xidea_organization.organization.class%
+            - '%xidea_organization.organization.class%'
         tags:
-            - { name: form.type, alias: "xidea_organization" }
+            - { name: form.type }
     xidea_organization.organization.form.factory.default:
-        class: %xidea_organization.organization.form.factory.default.class%
+        class: '%xidea_organization.organization.form.factory.default.class%'
         arguments:
-            - @form.factory
-            - %xidea_organization.organization.form.name%
-            - %xidea_organization.organization.form.type%
-            - %xidea_organization.organization.form.validation_groups%
+            - '@form.factory'
+            - '%xidea_organization.organization.form.name%'
+            - '%xidea_organization.organization.form.type%'
+            - '%xidea_organization.organization.form.validation_groups%'
     xidea_organization.organization.form.handler.default:
-        class: %xidea_organization.organization.form.handler.default.class%
+        class: '%xidea_organization.organization.form.handler.default.class%'
         arguments:
-            - @xidea_organization.organization.form.factory
-            - @event_dispatcher
+            - '@xidea_organization.organization.form.factory'
+            - '@event_dispatcher'
     

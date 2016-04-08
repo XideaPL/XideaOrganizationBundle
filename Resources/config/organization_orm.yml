@@ -5,19 +5,18 @@ parameters:
   
 services:
     xidea_organization.organization.repository.default:
-        class: %xidea_organization.organization.repository.default.class%
-        factory_service: doctrine.orm.entity_manager
-        factory_method: getRepository
+        class: '%xidea_organization.organization.repository.default.class%'
+        factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments:
-            - %xidea_organization.organization.class%
+            - '%xidea_organization.organization.class%'
     xidea_organization.organization.loader.default:
-        class: %xidea_organization.organization.loader.default.class%
+        class: '%xidea_organization.organization.loader.default.class%'
         arguments:
-            - @xidea_organization.organization.repository.default
-            - @xidea_organization.organization.configuration
-            - @xidea_base.paginator
+            - '@xidea_organization.organization.repository.default'
+            - '@xidea_organization.organization.configuration'
+            - '@xidea_base.paginator'
     xidea_organization.organization.manager.default:
-        class: %xidea_organization.organization.manager.default.class%
+        class: '%xidea_organization.organization.manager.default.class%'
         arguments:
-            - @doctrine.orm.entity_manager
-            - @event_dispatcher
+            - '@doctrine.orm.entity_manager'
+            - '@event_dispatcher'
